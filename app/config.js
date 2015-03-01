@@ -132,7 +132,7 @@ var pipeline = [
 
     function overridePortSetting(context) {
         if (process.env.PORT) {
-            context.result.http.port = process.env.PORT;
+            context.result.http.port = 8080;
         }
     },
 
