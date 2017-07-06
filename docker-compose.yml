@@ -1,0 +1,27 @@
+version: '2'
+services:
+
+  web:
+    image: mikemichel/letschat
+#    volumes:
+#      - ./:/usr/src/app
+    ports:
+      - "80:5000"
+    depends_on:
+      - mongo
+    networks:
+      - all
+    environment:
+      LCB_DATABASE_URI: "mongodb://mongo/letschat"
+
+  mongo:
+    image: mongo:3
+    command: mongod --smallfiles
+    networks:
+      - all
+    volumes:
+      - /tmp/db/:/data/db
+      # optional
+      # - /tmp/config:/data/configdb
+networks:
+  all:
